@@ -1,11 +1,19 @@
-$SETTAG = ":?/START/*\SET\!:"
+$uuid = "a43a29ee91695e1e8608a56e66b84cab"
+$SETTAG = ":?/START/*$uuid\SET\!:"
+# UUID should be unique, consider to generate a new uuid if you folk this repo
 
-function SourceCmd($cmd_path) {
-    ImportEnv(GetCmdSet($cmd_path))
+function SourceCmd() {
+    [CmdletBinding()]
+    Param(
+        [string]$CmdPath
+    )
+    GetCmdSet($CmdPath)
+    return
 }
 
-function GetCmdSet($cmd_path) {
-    $content = cmd /c "`"$cmd_path`"&echo $SETTAG&set" | ForEach-Object { $_ }
+function GetCmdSet($CmdPath) {
+    $content = cmd /c "`"$CmdPath`"&echo $SETTAG&set" | ForEach-Object { $_ }
+    Write-Verbose (Join-String -InputObject $content -Separator "`n")
     $content = $content[([Array]::LastIndexOf($content, $SETTAG) + 1)..$content.Length]
     return $content
 }
