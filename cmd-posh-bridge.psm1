@@ -1,24 +1,24 @@
-$uuid = "a43a29ee91695e1e8608a56e66b84cab"
+$uuid = "59985486-5787-4770-9b23-da9182e660b7"
 $SETTAG = ":?/START/*$uuid\SET\!:"
 # UUID should be unique, consider to generate a new uuid if you folk this repo
 
-function SourceCmd() {
+function Import-CmdEnv() {
     [CmdletBinding()]
     Param(
         [string]$CmdPath
     )
-    GetCmdSet($CmdPath)
-    return
+    $content = GetCmdSet($CmdPath)
+    ImportCmdEnv($content) | Out-Null
 }
 
 function GetCmdSet($CmdPath) {
-    $content = cmd /c "`"$CmdPath`"&echo $SETTAG&set" | ForEach-Object { $_ }
+    $content = cmd /c "`"$CmdPath`"&echo.&echo $SETTAG&set"
     Write-Verbose (Join-String -InputObject $content -Separator "`n")
     $content = $content[([Array]::LastIndexOf($content, $SETTAG) + 1)..$content.Length]
     return $content
 }
 
-function ImportEnv($psenv) {
+function ImportCmdEnv($psenv) {
     Push-Location Env:
     foreach ($line in $psenv) {
         if ($line -Match '(.*?)=(.*)') {} else { continue }
@@ -28,3 +28,4 @@ function ImportEnv($psenv) {
     }
     Pop-Location
 }
+Export-ModuleMember -Function Import-CmdEnv

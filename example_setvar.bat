@@ -1,3 +1,4 @@
+echo a=abcd (This should be ignored)
 set a=1
 set aa=Test value;Test Path
 set b=2
