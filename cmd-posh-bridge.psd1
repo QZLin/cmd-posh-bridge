@@ -27,10 +27,10 @@
     # CompanyName       = 'Unknown'
 
     # Copyright statement for this module
-    Copyright         = '(c) Q.Z.Lin. All rights reserved.'
+    Copyright         = 'LGPL-2.1 (c) Q.Z.Lin. All rights reserved.'
 
     # Description of the functionality provided by this module
-    # Description = ''
+    Description = 'Import environment variable to powershell from cmd/bat script'
 
     # Minimum version of the PowerShell engine required by this module
     # PowerShellVersion = ''
