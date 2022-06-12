@@ -1,4 +1,3 @@
-."$PSScriptRoot/bridge.ps1"
-
-SourceCmd example_setvar.bat -Verbose
+Import-Module cmd-posh-bridge
+Import-CmdEnv example_setvar.bat -Verbose
 Get-ChildItem env:
