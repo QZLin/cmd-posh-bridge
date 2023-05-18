@@ -12,7 +12,7 @@
     RootModule        = 'cmd-posh-bridge.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2'
+    ModuleVersion     = '0.6'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@
     Copyright         = 'LGPL-2.1 (c) Q.Z.Lin. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description = 'Import environment variable to powershell from cmd/bat script'
+    Description       = 'Import environment variable to powershell from cmd/bat script'
 
     # Minimum version of the PowerShell engine required by this module
     # PowerShellVersion = ''
