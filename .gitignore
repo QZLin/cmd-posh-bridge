@@ -1,3 +1,4 @@
 .vscode
 .tmp.psenv
 test.ps1
+release
